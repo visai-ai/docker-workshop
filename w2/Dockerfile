@@ -1,13 +1,13 @@
-FROM python:3.6-slim-buster
+FROM python:3.6-slim
 
 WORKDIR /app
 
-COPY requirements.txt ./
+COPY requirements.txt .
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
 EXPOSE 4000
 
-CMD [ "python3", "-m" , "flask", "run", "--port=4000", "--host=0.0.0.0"]
+CMD [ "python", "app.py"]
