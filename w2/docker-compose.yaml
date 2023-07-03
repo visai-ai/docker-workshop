@@ -9,6 +9,7 @@ services:
       - DB_URL=postgresql://postgres:postgres@flask_db:5432/postgres
     depends_on:
       - flask_db
+    restart: on-failure
   flask_db:
     container_name: flask_db
     image: postgres:12
@@ -18,5 +19,4 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
-    volumes:
-      - ./pgdata:/var/lib/postgresql/data
+    restart: on-failure
